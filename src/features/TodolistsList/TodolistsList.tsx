@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { AppRootStateType } from '../../app/store'
+import React, {useCallback, useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {AppRootStateType} from '../../app/store'
 import {
     addTodolistTC,
     changeTodolistFilterAC,
@@ -10,12 +10,12 @@ import {
     removeTodolistTC,
     TodolistDomainType
 } from './todolists-reducer'
-import { addTaskTC, removeTaskTC, TasksStateType, updateTaskTC } from './tasks-reducer'
-import { TaskStatuses } from '../../api/todolists-api'
+import {addTaskTC, removeTaskTC, TasksStateType, updateTaskTC} from './tasks-reducer'
+import {TaskStatuses} from '../../api/todolists-api'
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import { AddItemForm } from '../../components/AddItemForm/AddItemForm'
-import { Todolist } from './Todolist/Todolist'
+import {AddItemForm} from '../../components/AddItemForm/AddItemForm'
+import {Todolist} from './Todolist/Todolist'
 import {Navigate} from "react-router-dom";
 
 type PropsType = {
@@ -25,7 +25,7 @@ type PropsType = {
 export const TodolistsList: React.FC<PropsType> = ({demo = false}) => {
     const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
-    const isLoggedIn = useSelector<AppRootStateType, boolean>( state => state.auth.isLoggedIn )
+    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
     const dispatch = useDispatch()
 
 
@@ -58,7 +58,7 @@ export const TodolistsList: React.FC<PropsType> = ({demo = false}) => {
     }, [])
 
     const changeFilter = useCallback(function (value: FilterValuesType, todolistId: string) {
-        const action = changeTodolistFilterAC(todolistId, value)
+        const action = changeTodolistFilterAC({id: todolistId, filter: value})
         dispatch(action)
     }, [])
 

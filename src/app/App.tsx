@@ -16,13 +16,11 @@ import {ErrorSnackbar} from '../components/ErrorSnackbar/ErrorSnackbar'
 import {Login} from "../features/Login/Login";
 import {Navigate, Route, Routes} from "react-router-dom";
 import {CircularProgress} from "@mui/material";
-import {logoutTC} from "../features/Login/authReducer";
+import { logoutTC } from '../features/Login/authReducer'
 
-type PropsType = {
-    demo?: boolean
-}
 
-function App({demo = false}: PropsType) {
+
+function App() {
     const dispatch = useDispatch()
     const isInitialized = useSelector<AppRootStateType, boolean>( state => state.app.isInitialized )
     const isLoggedIn = useSelector<AppRootStateType, boolean>( state => state.auth.isLoggedIn )

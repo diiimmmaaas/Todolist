@@ -27,7 +27,7 @@ function App() {
 
     useEffect( () => {
         dispatch(initializeAppTC())
-    }, [] )
+    }, [dispatch] )
 
     const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
 
